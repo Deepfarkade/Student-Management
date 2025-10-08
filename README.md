@@ -1,6 +1,12 @@
 # Student CRM Demo
 
-A lightweight student relationship management demo showcasing landing, authentication, and dashboard experiences using HTML, CSS, JavaScript, PHP, and MySQL.
+A lightweight student relationship management demo showcasing landing, authentic   • If PHP is installed under `C:\Program Files\php-8.4.13`, change the path to `"C:\Program Files\php-8.4.13\ext"` (remember to wrap it in quotes).  
+   • Leave the remaining directives as-is—they enable error reporting suitable for local development.
+5. Refresh the PATH environment variable without closing PowerShell:
+   ```powershell
+   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+   ```
+6. Verify the extensions are active:n, and dashboard experiences using HTML, CSS, JavaScript, PHP, and MySQL.
 
 ## ✨ Features
 
@@ -111,13 +117,19 @@ The repository includes a ready-to-use PHP configuration file at `php.ini` (loca
 
 ## 🚀 Run Locally
 
-1. Launch a PHP development server from the project root:
+1. Refresh the PATH environment variable in your current PowerShell session:
+
+```powershell
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+```
+
+2. Launch a PHP development server from the project root:
 
 ```powershell
 php -S localhost:8000
 ```
 
-2. Visit `http://localhost:8000/index.html` in your browser.
+3. Visit `http://localhost:8000/index.html` in your browser.
 
 > The JavaScript fetch calls target the PHP endpoints via relative paths (e.g., `../php/login.php`). Keeping the PHP server root at the project root preserves these paths.
 
