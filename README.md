@@ -76,12 +76,12 @@ VALUES (
 
 1. In MySQL Workbench, open **Database ▸ Manage Connections** and highlight your local instance (see the screenshot in this project notes). Copy the host, port, username, and password values shown there.
 2. Open `php/db-connect.php` in your editor (this file centralizes the PHP ↔️ MySQL connection used by every endpoint).
-3. Update the values to mirror the connection you use in MySQL Workbench (`127.0.0.1`, port `3306`, username `root`, password `Qwerty@123`). The database name must remain `student_crm` unless you create a database with a different name in `schema.sql`.
+3. Update the values to mirror the connection you use in MySQL Workbench (`127.0.0.1`, port `3306`, username `root`, password `XXXXXXX`). The database name must remain `student_crm` unless you create a database with a different name in `schema.sql`.
 
 ```php
 $host = '127.0.0.1';   // Hostname taken from MySQL Workbench > Manage Server Connections
 $username = 'root';    // Username used in Workbench
-$password = 'Qwerty@123'; // Password stored for the local MySQL instance
+$password = 'XXXXXX'; // Password stored for the local MySQL instance
 $database = 'student_crm'; // Schema created by database/schema.sql
 ```
 
