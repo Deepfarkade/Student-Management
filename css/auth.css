@@ -1,0 +1,137 @@
+/* Shared styling for authentication pages */
+.auth-page { /* Styles the authentication page wrapper */
+    min-height: 100vh; /* Ensures full viewport height */
+    display: flex; /* Uses flexbox layout */
+    flex-direction: column; /* Stacks children vertically */
+    background-color: var(--background-light); /* Applies light background */
+    transition: background-color var(--transition-speed) ease; /* Animates background transitions */
+} /* Ends authentication page wrapper styling */
+
+body.dark-mode .auth-page { /* Dark mode overrides */
+    background-color: var(--background-dark); /* Switches to dark background */
+} /* Ends dark mode auth wrapper styling */
+
+.auth-header { /* Styles the authentication header */
+    display: flex; /* Uses flex layout */
+    justify-content: space-between; /* Separates logo and links */
+    align-items: center; /* Centers items vertically */
+    padding: 1.5rem 8vw; /* Adds padding */
+} /* Ends auth header styling */
+
+.auth-card { /* Styles the authentication form card */
+    background-color: var(--surface-light); /* Applies light surface color */
+    margin: auto; /* Centers the card */
+    padding: 2.5rem 2rem; /* Adds internal spacing */
+    border-radius: 1.75rem; /* Rounds card corners */
+    box-shadow: var(--shadow-soft); /* Adds drop shadow */
+    width: min(420px, 90%); /* Sets responsive width */
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; /* Animates color transitions */
+} /* Ends auth card styling */
+
+body.dark-mode .auth-card { /* Dark mode overrides for auth card */
+    background-color: var(--surface-dark); /* Uses dark surface background */
+} /* Ends dark mode auth card styling */
+
+.auth-card h1 { /* Styles form heading */
+    font-size: 1.8rem; /* Sets heading size */
+    margin-bottom: 1rem; /* Adds spacing below heading */
+    text-align: center; /* Centers heading text */
+} /* Ends form heading styling */
+
+.auth-card p.helper-text { /* Styles helper text below heading */
+    color: var(--text-secondary); /* Uses secondary text color */
+    text-align: center; /* Centers text */
+    margin-bottom: 1.75rem; /* Adds spacing */
+} /* Ends helper text styling */
+
+body.dark-mode .auth-card p.helper-text { /* Dark mode overrides for helper text */
+    color: rgba(248, 250, 252, 0.75); /* Lightens text color */
+} /* Ends dark mode helper text styling */
+
+.form-group { /* Styles each form field group */
+    display: flex; /* Uses flex layout */
+    flex-direction: column; /* Stacks label and input vertically */
+    gap: 0.4rem; /* Adds spacing between label and input */
+    margin-bottom: 1.1rem; /* Adds spacing between groups */
+} /* Ends form group styling */
+
+label { /* Styles form labels */
+    font-weight: 600; /* Makes label text bold */
+} /* Ends label styling */
+
+input, select { /* Styles inputs and select dropdowns */
+    padding: 0.8rem 0.9rem; /* Adds internal spacing */
+    border-radius: 0.8rem; /* Rounds input corners */
+    border: 1.5px solid rgba(148, 163, 184, 0.4); /* Applies subtle border */
+    background-color: #ffffff; /* Sets background color */
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Animates focus state */
+} /* Ends input styling */
+
+body.dark-mode input,
+body.dark-mode select { /* Dark mode overrides for inputs */
+    background-color: rgba(15, 23, 42, 0.8); /* Uses semi-transparent dark background */
+    color: var(--text-inverse); /* Sets text color to light */
+    border-color: rgba(148, 163, 184, 0.25); /* Adjusts border color */
+} /* Ends dark mode input styling */
+
+input:focus, select:focus { /* Focus state styling */
+    outline: none; /* Removes default outline */
+    border-color: var(--primary-blue); /* Highlights border in brand color */
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18); /* Adds focus ring */
+} /* Ends focus styling */
+
+.form-footer { /* Styles the form footer links */
+    display: flex; /* Uses flex layout */
+    justify-content: space-between; /* Spreads links apart */
+    font-size: 0.9rem; /* Sets smaller font size */
+    margin-top: 1.2rem; /* Adds spacing above footer */
+} /* Ends form footer styling */
+
+.form-footer a { /* Styles footer links */
+    color: var(--primary-blue); /* Applies brand blue color */
+} /* Ends footer link styling */
+
+.checkbox-label { /* Styles the combined checkbox label wrapper */
+    display: inline-flex; /* Uses inline flex for alignment */
+    align-items: center; /* Vertically centers checkbox and text */
+    gap: 0.5rem; /* Adds spacing between checkbox and text */
+    font-weight: 500; /* Sets medium font weight for clarity */
+} /* Ends checkbox label styling */
+
+.checkbox-label input { /* Targets checkbox input inside label */
+    width: 1rem; /* Sets checkbox width */
+    height: 1rem; /* Sets checkbox height */
+} /* Ends checkbox input styling */
+
+.alert { /* Base styling for alert messages */
+    display: none; /* Hides alerts by default */
+    margin-bottom: 1rem; /* Adds spacing below */
+    padding: 0.75rem 1rem; /* Adds internal spacing */
+    border-radius: 0.8rem; /* Rounds alert corners */
+    font-size: 0.95rem; /* Sets font size */
+    font-weight: 500; /* Sets font weight */
+} /* Ends alert base styling */
+
+.alert.show { /* Styling when alert is visible */
+    display: block; /* Displays the alert */
+} /* Ends visible alert styling */
+
+.alert.error { /* Styles for error alerts */
+    background-color: rgba(239, 68, 68, 0.12); /* Applies light red background */
+    color: #b91c1c; /* Sets text color to dark red */
+    border: 1.5px solid rgba(239, 68, 68, 0.35); /* Adds matching border */
+} /* Ends error alert styling */
+
+.alert.success { /* Styles for success alerts */
+    background-color: rgba(34, 197, 94, 0.12); /* Applies light green background */
+    color: #15803d; /* Sets text color to dark green */
+    border: 1.5px solid rgba(34, 197, 94, 0.35); /* Adds matching border */
+} /* Ends success alert styling */
+
+.step-hidden { /* Utility class to hide step content */
+    display: none; /* Hides elements */
+} /* Ends step hidden styling */
+
+.step-visible { /* Utility class to show step content */
+    display: block; /* Displays elements */
+} /* Ends step visible styling */

@@ -1,0 +1,75 @@
+/* Landing page specific styling */
+.landing { /* Styles the main landing wrapper */
+    display: flex; /* Uses flexbox layout */
+    flex-direction: column; /* Arranges child sections vertically */
+    align-items: center; /* Centers content horizontally */
+    gap: 3rem; /* Adds vertical spacing between sections */
+    padding: 4rem 6vw 3rem; /* Adds generous padding */
+} /* Ends landing wrapper styling */
+
+.hero { /* Styles the hero section */
+    background: linear-gradient(135deg, #4f46e5, #3b82f6); /* Applies gradient background */
+    color: #ffffff; /* Sets text color to white */
+    padding: 4rem 3rem; /* Adds internal spacing */
+    border-radius: 2rem; /* Rounds hero corners */
+    text-align: center; /* Centers text */
+    max-width: 900px; /* Limits width on large screens */
+    width: 100%; /* Allows full width on small screens */
+    box-shadow: var(--shadow-soft); /* Adds soft shadow */
+} /* Ends hero section styling */
+
+.hero h1 { /* Styles hero heading */
+    font-size: clamp(2.3rem, 5vw, 3.4rem); /* Sets responsive heading size */
+    margin-bottom: 1rem; /* Adds spacing below heading */
+} /* Ends hero heading styling */
+
+.hero p { /* Styles hero paragraph */
+    font-size: 1.1rem; /* Sets paragraph font size */
+    margin-bottom: 2rem; /* Adds spacing below paragraph */
+    opacity: 0.9; /* Slightly reduces opacity for subtle effect */
+} /* Ends hero paragraph styling */
+
+.features { /* Styles feature section wrapper */
+    display: grid; /* Uses CSS grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Creates responsive columns */
+    gap: 1.5rem; /* Adds spacing between cards */
+    width: 100%; /* Uses full available width */
+    max-width: 1000px; /* Limits maximum width */
+} /* Ends features grid styling */
+
+.feature-card { /* Styles individual feature cards */
+    background-color: var(--surface-light); /* Applies light surface color */
+    padding: 2rem; /* Adds internal spacing */
+    border-radius: 1.5rem; /* Rounds card corners */
+    box-shadow: var(--shadow-soft); /* Adds soft shadow */
+    text-align: center; /* Centers card content */
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Animates hover effects */
+} /* Ends feature card styling */
+
+body.dark-mode .feature-card { /* Dark mode overrides for feature cards */
+    background-color: var(--surface-dark); /* Uses dark surface color */
+} /* Ends dark mode feature card styling */
+
+.feature-card:hover { /* Hover state for feature cards */
+    transform: translateY(-6px); /* Slightly lifts the card */
+    box-shadow: 0 18px 35px rgba(59, 130, 246, 0.17); /* Applies stronger shadow */
+} /* Ends feature card hover styling */
+
+.feature-card .icon { /* Styles feature icon */
+    font-size: 2rem; /* Sets icon size */
+    margin-bottom: 1rem; /* Adds spacing below icon */
+} /* Ends feature icon styling */
+
+@media (max-width: 768px) { /* Responsive rules for tablet and below */
+    .top-nav { /* Targets the top navigation */
+        padding: 1rem 5vw; /* Adjusts padding */
+    } /* Ends navigation responsive styling */
+
+    .landing { /* Targets landing wrapper */
+        padding: 3rem 5vw 2.5rem; /* Adjusts padding */
+    } /* Ends landing responsive styling */
+
+    .hero { /* Targets hero section */
+        padding: 3rem 2rem; /* Adjusts padding */
+    } /* Ends hero responsive styling */
+} /* Ends responsive rules */

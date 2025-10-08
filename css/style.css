@@ -1,0 +1,168 @@
+/* Global base stylesheet shared across pages */
+:root { /* Declares CSS variables for color palette */
+    --primary-blue: #2563eb; /* Primary brand blue color */
+    --primary-blue-light: #3b82f6; /* Lighter variant of the brand blue */
+    --primary-outline: #bfdbfe; /* Outline color for buttons */
+    --background-light: #ffffff; /* Background color for light mode */
+    --background-dark: #0f172a; /* Background color for dark mode */
+    --surface-light: #f8fafc; /* Surface color for cards in light mode */
+    --surface-dark: #111827; /* Surface color for cards in dark mode */
+    --text-primary: #0f172a; /* Main text color for light mode */
+    --text-secondary: #475569; /* Secondary text color for light mode */
+    --text-inverse: #f8fafc; /* Text color to display on dark surfaces */
+    --shadow-soft: 0px 12px 30px rgba(15, 23, 42, 0.12); /* Soft drop shadow for depth */
+    --transition-speed: 0.3s; /* Default transition duration */
+} /* Ends root variable declarations */
+
+* { /* Applies rules to all elements */
+    margin: 0; /* Resets default margin */
+    padding: 0; /* Resets default padding */
+    box-sizing: border-box; /* Uses border-box sizing for layout consistency */
+} /* Ends universal selector */
+
+body { /* Styles applied to the body element */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Sets a clean sans-serif font stack */
+    background-color: var(--background-light); /* Applies light mode background by default */
+    color: var(--text-primary); /* Sets default text color */
+    min-height: 100vh; /* Ensures body covers full viewport height */
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; /* Animates color changes */
+} /* Ends body styling */
+
+body.dark-mode { /* Styles activated when the dark mode class is applied */
+    background-color: var(--background-dark); /* Switches background to dark color */
+    color: var(--text-inverse); /* Switches default text color to light */
+} /* Ends dark mode body styling */
+
+a { /* Styles for all anchor tags */
+    text-decoration: none; /* Removes default underline */
+    color: inherit; /* Inherits text color from parent */
+} /* Ends anchor styling */
+
+.btn { /* Base styling for button-like elements */
+    display: inline-flex; /* Uses flexbox for button content alignment */
+    align-items: center; /* Vertically centers content */
+    justify-content: center; /* Horizontally centers content */
+    padding: 0.65rem 1.4rem; /* Adds internal spacing */
+    border-radius: 999px; /* Gives buttons a pill shape */
+    font-weight: 600; /* Makes button text bold */
+    cursor: pointer; /* Shows pointer cursor on hover */
+    border: none; /* Removes default border */
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Animates state changes */
+} /* Ends base button styling */
+
+.btn-primary { /* Styles for primary action buttons */
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-light)); /* Applies gradient background */
+    color: #ffffff; /* Sets text color to white */
+    box-shadow: var(--shadow-soft); /* Adds soft drop shadow */
+} /* Ends primary button styling */
+
+.btn-primary:hover { /* Hover state for primary buttons */
+    filter: brightness(1.05); /* Slightly brightens the button */
+} /* Ends primary hover styling */
+
+.btn-outline { /* Styles for outline buttons */
+    background-color: transparent; /* Makes background transparent */
+    border: 2px solid var(--primary-outline); /* Adds a light blue border */
+    color: var(--primary-blue); /* Sets text color to brand blue */
+} /* Ends outline button styling */
+
+.btn-outline:hover { /* Hover state for outline buttons */
+    background-color: var(--primary-outline); /* Fills button background with outline color */
+} /* Ends outline hover styling */
+
+.btn-dark { /* Styles for theme toggle button */
+    background-color: #111827; /* Applies dark background */
+    color: var(--text-inverse); /* Uses light text color */
+    padding: 0.55rem 1.1rem; /* Adjusts spacing */
+} /* Ends dark button styling */
+
+.btn-dark:hover { /* Hover state for theme toggle button */
+    filter: brightness(1.1); /* Slightly brightens the button */
+} /* Ends dark button hover styling */
+
+.top-nav { /* Styles the top navigation bar */
+    display: flex; /* Ensures horizontal layout */
+    align-items: center; /* Aligns items vertically */
+    justify-content: space-between; /* Places logo and links at extremes */
+    padding: 1.25rem 6vw; /* Adds internal spacing with responsive width */
+    background-color: rgba(255, 255, 255, 0.85); /* Uses translucent white background */
+    backdrop-filter: blur(16px); /* Adds a frosted glass effect */
+    position: sticky; /* Keeps navigation stuck to top when scrolling */
+    top: 0; /* Positions at the top of the viewport */
+    z-index: 100; /* Ensures navigation stays above other elements */
+    transition: background-color var(--transition-speed) ease; /* Animates background transitions */
+} /* Ends top navigation styling */
+
+body.dark-mode .top-nav { /* Dark mode overrides for navigation */
+    background-color: rgba(15, 23, 42, 0.8); /* Applies semi-transparent dark background */
+} /* Ends dark mode navigation styling */
+
+.logo-group { /* Styles the logo container */
+    display: flex; /* Uses flex layout */
+    align-items: center; /* Vertically centers items */
+    gap: 0.45rem; /* Adds spacing between emoji and text */
+    font-weight: 700; /* Makes brand text bold */
+    font-size: 1.15rem; /* Sets font size */
+} /* Ends logo group styling */
+
+.nav-links { /* Styles the navigation links container */
+    display: flex; /* Uses flex layout */
+    gap: 0.75rem; /* Adds spacing between buttons */
+    align-items: center; /* Centers buttons vertically */
+} /* Ends navigation links styling */
+
+.page-footer { /* Styles the footer */
+    text-align: center; /* Centers footer text */
+    padding: 2rem 1rem; /* Adds padding around footer */
+    font-size: 0.9rem; /* Sets font size slightly smaller */
+    color: var(--text-secondary); /* Uses secondary text color */
+} /* Ends footer styling */
+
+body.dark-mode .page-footer { /* Dark mode styling for footer */
+    color: rgba(248, 250, 252, 0.8); /* Lightens text for readability */
+} /* Ends dark mode footer styling */
+
+.modal { /* Base styling for modal popups */
+    position: fixed; /* Fixes modal relative to viewport */
+    inset: 0; /* Stretches modal to cover entire viewport */
+    display: none; /* Hides modal by default */
+    align-items: center; /* Centers modal vertically */
+    justify-content: center; /* Centers modal horizontally */
+    background-color: rgba(15, 23, 42, 0.45); /* Adds semi-transparent backdrop */
+    z-index: 200; /* Places modal above other elements */
+    padding: 1rem; /* Adds padding around modal content */
+} /* Ends modal base styling */
+
+.modal.active { /* Styling when modal is active */
+    display: flex; /* Shows modal using flexbox */
+} /* Ends active modal styling */
+
+.modal-content { /* Styles the modal content box */
+    background-color: var(--background-light); /* Uses light background */
+    color: var(--text-primary); /* Sets text color */
+    padding: 1.75rem; /* Adds internal spacing */
+    border-radius: 1rem; /* Rounds corners */
+    box-shadow: var(--shadow-soft); /* Adds drop shadow */
+    max-width: 420px; /* Sets maximum width */
+    width: 100%; /* Allows full width across small screens */
+    text-align: center; /* Centers text */
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; /* Animates color transitions */
+} /* Ends modal content styling */
+
+body.dark-mode .modal-content { /* Dark mode overrides for modal content */
+    background-color: var(--surface-dark); /* Uses dark surface color */
+    color: var(--text-inverse); /* Switches text to light */
+} /* Ends dark mode modal content styling */
+
+.modal-content h2 { /* Styles modal headings */
+    margin-bottom: 1rem; /* Adds spacing below heading */
+} /* Ends modal heading styling */
+
+.modal-content p { /* Styles modal paragraphs */
+    margin-bottom: 1.5rem; /* Adds spacing below paragraphs */
+    color: var(--text-secondary); /* Uses secondary text color */
+} /* Ends modal paragraph styling */
+
+body.dark-mode .modal-content p { /* Dark mode override for modal paragraph text */
+    color: rgba(248, 250, 252, 0.75); /* Lightens text for readability */
+} /* Ends dark mode modal paragraph styling */

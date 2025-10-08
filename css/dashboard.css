@@ -1,0 +1,119 @@
+/* Dashboard specific styling */
+.dashboard-page { /* Styles dashboard page wrapper */
+    min-height: 100vh; /* Ensures full viewport height */
+    display: flex; /* Uses flex layout */
+    flex-direction: column; /* Stacks child sections vertically */
+    background-color: var(--background-light); /* Applies light background */
+    transition: background-color var(--transition-speed) ease; /* Animates background changes */
+} /* Ends dashboard page styling */
+
+body.dark-mode .dashboard-page { /* Dark mode override */
+    background-color: var(--background-dark); /* Applies dark background */
+} /* Ends dark mode dashboard styling */
+
+.dashboard-nav { /* Styles dashboard navigation bar */
+    display: flex; /* Uses flex layout */
+    justify-content: space-between; /* Separates brand and links */
+    align-items: center; /* Centers items vertically */
+    padding: 1.5rem 6vw; /* Adds internal spacing */
+    background-color: rgba(255, 255, 255, 0.82); /* Uses translucent white background */
+    backdrop-filter: blur(16px); /* Adds frosted glass effect */
+    position: sticky; /* Keeps navigation at top when scrolling */
+    top: 0; /* Positions at top of viewport */
+    z-index: 120; /* Places navigation above other elements */
+} /* Ends dashboard nav styling */
+
+body.dark-mode .dashboard-nav { /* Dark mode overrides for nav */
+    background-color: rgba(15, 23, 42, 0.8); /* Applies dark translucent background */
+} /* Ends dark mode nav styling */
+
+.dashboard-main { /* Styles main content area */
+    padding: 2.5rem 6vw; /* Adds padding for content */
+    display: flex; /* Uses flex layout */
+    flex-direction: column; /* Stacks sections vertically */
+    gap: 2.5rem; /* Adds spacing between sections */
+} /* Ends dashboard main styling */
+
+.cards-grid { /* Styles the dashboard cards container */
+    display: grid; /* Uses CSS grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Creates responsive columns */
+    gap: 1.5rem; /* Adds spacing between cards */
+} /* Ends cards grid styling */
+
+.dashboard-card { /* Styles individual dashboard cards */
+    background-color: var(--surface-light); /* Applies light surface color */
+    border-radius: 1.4rem; /* Rounds card corners */
+    padding: 1.8rem; /* Adds internal spacing */
+    box-shadow: var(--shadow-soft); /* Adds drop shadow */
+    display: flex; /* Uses flex layout */
+    flex-direction: column; /* Arranges content vertically */
+    gap: 0.6rem; /* Adds spacing between elements */
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Animates state transitions */
+} /* Ends dashboard card styling */
+
+body.dark-mode .dashboard-card { /* Dark mode overrides for cards */
+    background-color: var(--surface-dark); /* Applies dark surface color */
+} /* Ends dark mode card styling */
+
+.dashboard-card:hover { /* Hover state for cards */
+    transform: translateY(-4px); /* Slightly raises card */
+    box-shadow: 0 16px 30px rgba(37, 99, 235, 0.2); /* Intensifies shadow */
+} /* Ends card hover styling */
+
+.dashboard-card h3 { /* Styles card headings */
+    font-size: 1.1rem; /* Sets heading size */
+    color: var(--text-secondary); /* Uses secondary text color */
+} /* Ends card heading styling */
+
+body.dark-mode .dashboard-card h3 { /* Dark mode override for headings */
+    color: rgba(248, 250, 252, 0.8); /* Lightens heading color */
+} /* Ends dark mode heading styling */
+
+.dashboard-card span.value { /* Styles primary value text */
+    font-size: 2.2rem; /* Sets value font size */
+    font-weight: 700; /* Makes value text bold */
+} /* Ends value styling */
+
+.notifications { /* Styles notifications section */
+    background-color: var(--surface-light); /* Applies light surface color */
+    border-radius: 1.4rem; /* Rounds container corners */
+    box-shadow: var(--shadow-soft); /* Adds drop shadow */
+    padding: 1.8rem; /* Adds internal spacing */
+} /* Ends notifications styling */
+
+body.dark-mode .notifications { /* Dark mode overrides for notifications */
+    background-color: var(--surface-dark); /* Applies dark surface color */
+} /* Ends dark mode notifications styling */
+
+.notifications h2 { /* Styles notifications heading */
+    margin-bottom: 1.2rem; /* Adds spacing below heading */
+} /* Ends notifications heading styling */
+
+.notifications ul { /* Styles notification list */
+    list-style: none; /* Removes bullet points */
+    display: flex; /* Uses flex layout */
+    flex-direction: column; /* Stacks items vertically */
+    gap: 0.85rem; /* Adds spacing between items */
+} /* Ends notification list styling */
+
+.notifications li { /* Styles individual notification item */
+    padding: 0.85rem 1rem; /* Adds internal spacing */
+    border-radius: 0.9rem; /* Rounds item corners */
+    background-color: rgba(37, 99, 235, 0.08); /* Applies soft blue background */
+    color: var(--text-primary); /* Sets text color */
+} /* Ends notification item styling */
+
+body.dark-mode .notifications li { /* Dark mode override for notification items */
+    background-color: rgba(59, 130, 246, 0.18); /* Adjusts background color */
+    color: var(--text-inverse); /* Sets text color to light */
+} /* Ends dark mode notification item styling */
+
+@media (max-width: 768px) { /* Responsive rules for mobile */
+    .dashboard-nav { /* Targets dashboard navigation */
+        padding: 1.2rem 5vw; /* Adjusts padding */
+    } /* Ends nav responsive styling */
+
+    .dashboard-main { /* Targets main content */
+        padding: 2rem 5vw; /* Adjusts padding */
+    } /* Ends main responsive styling */
+} /* Ends responsive rules */

@@ -1,0 +1,82 @@
+<!DOCTYPE html> <!-- Declares HTML5 document type -->
+<html lang="en"> <!-- Sets language to English -->
+<head> <!-- Begins head section -->
+    <meta charset="UTF-8"> <!-- Sets UTF-8 encoding -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Disables legacy compatibility mode -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Enables responsive behaviour -->
+    <title>Student CRM - Register</title> <!-- Sets page title -->
+    <link rel="stylesheet" href="../css/style.css"> <!-- Loads global styles -->
+    <link rel="stylesheet" href="../css/auth.css"> <!-- Loads authentication styles -->
+    <script defer src="../js/config.js"></script> <!-- Loads configuration script -->
+    <script defer src="../js/theme.js"></script> <!-- Loads theme toggle script -->
+    <script defer src="../js/auth.js"></script> <!-- Loads authentication flow script -->
+</head> <!-- Ends head section -->
+<body class="light-mode"> <!-- Begins body with light mode class -->
+    <div class="auth-page"> <!-- Wrapper for authentication layout -->
+        <header class="auth-header"> <!-- Header section -->
+            <div class="logo-group"> <!-- Logo container -->
+                <span class="emoji">🎓</span> <!-- Graduation cap emoji -->
+                <span class="brand">Student CRM</span> <!-- Brand text -->
+            </div> <!-- Ends logo container -->
+            <div class="nav-links"> <!-- Header action links -->
+                <a href="login.html" class="btn btn-outline">Login</a> <!-- Link to login page -->
+                <button type="button" id="theme-toggle" class="btn btn-dark">🌙 Dark</button> <!-- Theme toggle button -->
+            </div> <!-- Ends action links -->
+        </header> <!-- Ends header -->
+
+        <main class="auth-card"> <!-- Main card with registration form -->
+            <h1>Register</h1> <!-- Form heading -->
+            <p class="helper-text">Create your account to start tracking academics.</p> <!-- Helper text -->
+            <form id="register-form"> <!-- Begins registration form -->
+                <div class="form-group"> <!-- First name field wrapper -->
+                    <label for="first_name">First Name</label> <!-- Label for first name input -->
+                    <input type="text" id="first_name" name="first_name" placeholder="Enter your first name" required> <!-- First name input -->
+                </div> <!-- Ends first name field -->
+                <div class="form-group"> <!-- Last name field wrapper -->
+                    <label for="last_name">Last Name</label> <!-- Label for last name input -->
+                    <input type="text" id="last_name" name="last_name" placeholder="Enter your last name" required> <!-- Last name input -->
+                </div> <!-- Ends last name field -->
+                <div class="form-group"> <!-- Email field wrapper -->
+                    <label for="register_email">Email</label> <!-- Label for email input -->
+                    <input type="email" id="register_email" name="email" placeholder="Enter your email" required> <!-- Email input -->
+                </div> <!-- Ends email field -->
+                <div class="form-group"> <!-- Security question selection wrapper -->
+                    <label for="security_question">Security Question</label> <!-- Label for security question select -->
+                    <select id="security_question" name="security_question" required> <!-- Security question dropdown -->
+                        <option value="" disabled selected>Select a security question</option> <!-- Prompt option -->
+                        <option value="What is your favorite subject?">What is your favorite subject?</option> <!-- Option one -->
+                        <option value="What is your first school's name?">What is your first school's name?</option> <!-- Option two -->
+                        <option value="What city were you born in?">What city were you born in?</option> <!-- Option three -->
+                        <option value="What is your best friend's name?">What is your best friend's name?</option> <!-- Option four -->
+                    </select> <!-- Ends security question dropdown -->
+                </div> <!-- Ends security question field -->
+                <div class="form-group"> <!-- Security answer field wrapper -->
+                    <label for="security_answer">Security Answer</label> <!-- Label for security answer input -->
+                    <input type="text" id="security_answer" name="security_answer" placeholder="Enter your answer" required> <!-- Security answer input -->
+                </div> <!-- Ends security answer field -->
+                <div class="form-group"> <!-- Password field wrapper -->
+                    <label for="register_password">Password</label> <!-- Label for password input -->
+                    <input type="password" id="register_password" name="password" placeholder="Create a password" required minlength="6"> <!-- Password input -->
+                </div> <!-- Ends password field -->
+                <div class="form-group"> <!-- Confirm password field wrapper -->
+                    <label for="confirm_password">Confirm Password</label> <!-- Label for confirm password input -->
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter your password" required minlength="6"> <!-- Confirm password input -->
+                </div> <!-- Ends confirm password field -->
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button> <!-- Submit button spanning full width -->
+            </form> <!-- Ends registration form -->
+            <div class="form-footer"> <!-- Footer links -->
+                <span>Already have an account?</span> <!-- Informational text -->
+                <a href="login.html">Login here</a> <!-- Link back to login -->
+            </div> <!-- Ends footer links -->
+        </main> <!-- Ends main card -->
+    </div> <!-- Ends authentication page wrapper -->
+
+    <div class="modal" id="feedback-modal"> <!-- Modal container for feedback -->
+        <div class="modal-content"> <!-- Modal content box -->
+            <h2 id="feedback-title">Notice</h2> <!-- Modal title placeholder -->
+            <p id="feedback-message">Message goes here.</p> <!-- Modal message placeholder -->
+            <button class="btn btn-primary" id="modal-close" type="button">Close</button> <!-- Button to close modal -->
+        </div> <!-- Ends modal content -->
+    </div> <!-- Ends modal container -->
+</body> <!-- Ends body -->
+</html> <!-- Ends HTML document -->

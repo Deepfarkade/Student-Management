@@ -1,0 +1,68 @@
+<!DOCTYPE html> <!-- Declares HTML5 document type -->
+<html lang="en"> <!-- Sets document language to English -->
+<head> <!-- Begins head section -->
+    <meta charset="UTF-8"> <!-- Sets UTF-8 character encoding -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Disables IE compatibility mode -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Enables responsive behaviour -->
+    <title>Student CRM - Dashboard</title> <!-- Sets page title -->
+    <link rel="stylesheet" href="../css/style.css"> <!-- Loads global styles -->
+    <link rel="stylesheet" href="../css/dashboard.css"> <!-- Loads dashboard specific styles -->
+    <script defer src="../js/config.js"></script> <!-- Loads configuration script -->
+    <script defer src="../js/theme.js"></script> <!-- Loads theme toggle script -->
+    <script defer src="../js/dashboard.js"></script> <!-- Loads dashboard logic script -->
+</head> <!-- Ends head section -->
+<body class="light-mode"> <!-- Begins body with light mode class -->
+    <div class="dashboard-page"> <!-- Wrapper for dashboard layout -->
+        <header class="dashboard-nav"> <!-- Dashboard navigation bar -->
+            <div class="logo-group"> <!-- Logo container -->
+                <span class="emoji">🎓</span> <!-- Graduation cap emoji -->
+                <span class="brand">Student CRM</span> <!-- Brand text -->
+            </div> <!-- Ends logo container -->
+            <nav class="nav-links"> <!-- Navigation links container -->
+                <span>Welcome, <strong id="welcome-name">Guest</strong></span> <!-- Displays welcome message with dynamic name -->
+                <button type="button" id="theme-toggle" class="btn btn-dark">🌙 Dark</button> <!-- Theme toggle button -->
+                <button type="button" id="logout-button" class="btn btn-outline">Logout</button> <!-- Logout button -->
+            </nav> <!-- Ends navigation links -->
+        </header> <!-- Ends dashboard navigation -->
+
+        <main class="dashboard-main"> <!-- Main dashboard content area -->
+            <section> <!-- Section containing dashboard title and subtitle -->
+                <h1>Dashboard</h1> <!-- Dashboard heading -->
+                <p style="color: var(--text-secondary);">Stay on top of your academic journey with quick insights.</p> <!-- Supporting subtitle -->
+                <p style="margin-top: 0.5rem;">Logged in as: <span id="session-email">loading...</span></p> <!-- Displays logged-in email -->
+            </section> <!-- Ends heading section -->
+
+            <section class="cards-grid"> <!-- Grid container for summary cards -->
+                <article class="dashboard-card"> <!-- Card for enrolled courses -->
+                    <h3>Enrolled Courses</h3> <!-- Card title -->
+                    <span class="value">8</span> <!-- Demo value for courses -->
+                    <p>Courses you are currently tracking this semester.</p> <!-- Descriptive text -->
+                </article> <!-- Ends courses card -->
+                <article class="dashboard-card"> <!-- Card for attendance rate -->
+                    <h3>Attendance Rate</h3> <!-- Card title -->
+                    <span class="value">95%</span> <!-- Demo attendance value -->
+                    <p>Maintain a high attendance to stay engaged.</p> <!-- Descriptive text -->
+                </article> <!-- Ends attendance card -->
+                <article class="dashboard-card"> <!-- Card for upcoming exams -->
+                    <h3>Upcoming Exams</h3> <!-- Card title -->
+                    <span class="value">3</span> <!-- Demo upcoming exams value -->
+                    <p>Prepare ahead with exam reminders.</p> <!-- Descriptive text -->
+                </article> <!-- Ends exams card -->
+            </section> <!-- Ends cards grid -->
+
+            <section class="notifications"> <!-- Section for notifications -->
+                <h2>Recent Notifications</h2> <!-- Notifications heading -->
+                <ul> <!-- List of notifications -->
+                    <li>Your assignment for Mathematics is due next week.</li> <!-- Notification item one -->
+                    <li>New course material uploaded for Data Structures.</li> <!-- Notification item two -->
+                    <li>Payment reminder: Semester fees due in 5 days.</li> <!-- Notification item three -->
+                </ul> <!-- Ends notifications list -->
+            </section> <!-- Ends notifications section -->
+        </main> <!-- Ends main content -->
+
+        <footer class="page-footer"> <!-- Footer section -->
+            <span>© 2025 Student CRM | Built for intuitive academic management.</span> <!-- Footer text -->
+        </footer> <!-- Ends footer -->
+    </div> <!-- Ends dashboard wrapper -->
+</body> <!-- Ends body -->
+</html> <!-- Ends HTML document -->

@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!-- Declares HTML5 document type -->
+<html lang="en"> <!-- Sets document language to English -->
+<head> <!-- Begins head section -->
+    <meta charset="UTF-8"> <!-- Declares UTF-8 character encoding -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Ensures compatibility mode is disabled in IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Sets viewport for responsive design -->
+    <title>Student CRM - Login</title> <!-- Sets page title -->
+    <link rel="stylesheet" href="../css/style.css"> <!-- Loads shared global styles -->
+    <link rel="stylesheet" href="../css/auth.css"> <!-- Loads authentication specific styles -->
+    <script defer src="../js/config.js"></script> <!-- Loads configuration values -->
+    <script defer src="../js/theme.js"></script> <!-- Loads theme toggle logic -->
+    <script defer src="../js/auth.js"></script> <!-- Loads authentication scripts -->
+</head> <!-- Ends head section -->
+<body class="light-mode"> <!-- Starts body with light theme class -->
+    <div class="auth-page"> <!-- Wrapper for authentication page layout -->
+        <header class="auth-header"> <!-- Header containing logo and navigation -->
+            <div class="logo-group"> <!-- Container for logo and text -->
+                <span class="emoji">🎓</span> <!-- Displays graduation cap emoji -->
+                <span class="brand">Student CRM</span> <!-- Shows brand name -->
+            </div> <!-- Ends logo group -->
+            <div class="nav-links"> <!-- Container for header action links -->
+                <a href="register.html" class="btn btn-outline">Register</a> <!-- Link to registration page -->
+                <button type="button" id="theme-toggle" class="btn btn-dark">🌙 Dark</button> <!-- Theme toggle button -->
+            </div> <!-- Ends nav links -->
+        </header> <!-- Ends header -->
+
+        <main class="auth-card"> <!-- Main card containing login form -->
+            <h1>Login</h1> <!-- Displays form heading -->
+            <p class="helper-text">Enter your credentials to access the dashboard.</p> <!-- Displays helper text -->
+            <form id="login-form"> <!-- Begins login form -->
+                <div class="form-group"> <!-- Wrapper for email field -->
+                    <label for="email">Email / Username</label> <!-- Label for email input -->
+                    <input type="text" id="email" name="email" placeholder="Enter your email or username" required> <!-- Email input field -->
+                </div> <!-- Ends email field -->
+                <div class="form-group"> <!-- Wrapper for password field -->
+                    <label for="password">Password</label> <!-- Label for password input -->
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required> <!-- Password input field -->
+                </div> <!-- Ends password field -->
+                <div class="form-group"> <!-- Wrapper for remember me checkbox -->
+                    <label class="checkbox-label"> <!-- Label wrapping checkbox and text -->
+                        <input type="checkbox" name="remember_me"> <!-- Checkbox input for remember me -->
+                        <span>Remember me</span> <!-- Text span describing checkbox -->
+                    </label> <!-- Ends checkbox label -->
+                </div> <!-- Ends remember me field -->
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button> <!-- Submit button spanning full width -->
+            </form> <!-- Ends login form -->
+            <div class="form-footer"> <!-- Footer links under form -->
+                <a href="forgot-password.html">Forgot password?</a> <!-- Link to password recovery page -->
+                <a href="register.html">Create account</a> <!-- Link to registration page -->
+            </div> <!-- Ends form footer -->
+        </main> <!-- Ends main card -->
+    </div> <!-- Ends authentication page wrapper -->
+
+    <div class="modal" id="feedback-modal"> <!-- Modal container for feedback -->
+        <div class="modal-content"> <!-- Modal content box -->
+            <h2 id="feedback-title">Notice</h2> <!-- Modal title placeholder -->
+            <p id="feedback-message">Message goes here.</p> <!-- Modal message placeholder -->
+            <button class="btn btn-primary" id="modal-close" type="button">Close</button> <!-- Button to close modal -->
+        </div> <!-- Ends modal content -->
+    </div> <!-- Ends modal container -->
+</body> <!-- Ends body -->
+</html> <!-- Ends HTML document -->
