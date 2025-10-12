@@ -57,7 +57,7 @@ function handleVerifyAnswer(mysqli $connection): void { // Defines helper to ver
         echo json_encode(['success' => false, 'message' => 'Email and answer are required.']); // Returns validation message
         return; // Exits function
     } // Ends validation
-    $query = $connection->prepare('SELECT security_answer FROM users WHERE email = ?'); // Prepares query to fetch stored answer hash
+    $query = $connection->prepare('SELECT security_answer FROM users WHERE email = ?'); // Prepares query to fetch stored answer
     $query->bind_param('s', $email); // Binds email parameter
     $query->execute(); // Executes query
     $result = $query->get_result(); // Retrieves result set
@@ -67,7 +67,7 @@ function handleVerifyAnswer(mysqli $connection): void { // Defines helper to ver
         echo json_encode(['success' => false, 'message' => 'No account found with that email.']); // Returns error message
         return; // Exits function
     } // Ends user check
-    $isValid = password_verify(strtolower($answer), $user['security_answer']); // Verifies lowercase answer against hashed value
+    $isValid = strcasecmp($answer, $user['security_answer']) === 0; // Performs case-insensitive comparison against stored value
     if (!$isValid) { // Checks if verification failed
         echo json_encode(['success' => false, 'message' => 'Security answer is incorrect.']); // Returns failure message
         return; // Exits function
@@ -82,9 +82,8 @@ function handleResetPassword(mysqli $connection): void { // Defines helper to re
         echo json_encode(['success' => false, 'message' => 'Email and new password are required.']); // Returns validation message
         return; // Exits function
     } // Ends validation
-    $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT); // Hashes new password securely
     $query = $connection->prepare('UPDATE users SET password = ? WHERE email = ?'); // Prepares update statement
-    $query->bind_param('ss', $hashedPassword, $email); // Binds hashed password and email
+    $query->bind_param('ss', $newPassword, $email); // Binds plain-text password and email
     $success = $query->execute(); // Executes update and stores result
     $query->close(); // Closes statement
     if (!$success || $connection->affected_rows === 0) { // Checks if update failed or affected no rows

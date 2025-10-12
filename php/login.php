@@ -31,7 +31,7 @@ $query->execute(); // Executes the prepared statement
 $result = $query->get_result(); // Retrieves the result set
 $user = $result->fetch_assoc(); // Fetches the user record as associative array
 
-if (!$user || !password_verify($password, $user['password'])) { // Verifies user exists and password matches hash
+if (!$user || $password !== $user['password']) { // Verifies user exists and password matches stored value
     echo json_encode(['success' => false, 'message' => 'Invalid email or password.']); // Returns authentication failure message
     $query->close(); // Closes prepared statement
     exit; // Stops script execution

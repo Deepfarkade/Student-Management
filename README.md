@@ -1,18 +1,12 @@
 # Student CRM Demo
 
-A lightweight student relationship management demo showcasing landing, authentic   • If PHP is installed under `C:\Program Files\php-8.4.13`, change the path to `"C:\Program Files\php-8.4.13\ext"` (remember to wrap it in quotes).  
-   • Leave the remaining directives as-is—they enable error reporting suitable for local development.
-5. Refresh the PATH environment variable without closing PowerShell:
-   ```powershell
-   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-   ```
-6. Verify the extensions are active:n, and dashboard experiences using HTML, CSS, JavaScript, PHP, and MySQL.
+A lightweight student relationship management demo showcasing landing, authentication, and dashboard experiences using HTML, CSS, JavaScript, PHP, and MySQL.
 
 ## ✨ Features
 
 - Landing page inspired by the supplied design with dark/light theme toggle.
 - Account registration capturing basic details plus security question/answer.
-- Login with PHP sessions and secure password hashing.
+- Login with PHP sessions and plain-text password comparison (hashing removed per project requirement).
 - Forgot password flow verifying security answer before password reset.
 - Authenticated dashboard with demo metrics, notifications, and logout.
 
@@ -44,8 +38,25 @@ Student-Management/
 │   └── logout.php
 ├── database/
 │   └── schema.sql
+├── php.ini
 └── README.md
 ```
+
+### Key Files at a Glance
+
+- `index.html` – Landing page structure.
+- `css/style.css` – Shared variables and base styling used across pages.
+- `css/landing.css`, `css/auth.css`, `css/dashboard.css` – Page-specific styling for landing, auth flows, and the dashboard respectively.
+- `js/theme.js` – Theme toggle logic and persistence.
+- `js/auth.js` – Front-end form handling for register/login/forgot password flows.
+- `js/dashboard.js` – Dashboard interactivity plus logout wiring.
+- `php/db-connect.php` – Central MySQL connection configuration.
+- `php/register.php` – Creates new accounts; saves passwords/security answers in plain text.
+- `php/login.php` – Authenticates users using plain-text password comparison and starts sessions.
+- `php/forgot-password.php` – Retrieves recovery questions, validates answers (case-insensitive), and updates passwords in plain text.
+- `php/logout.php` – Destroys the active session.
+- `database/schema.sql` – Defines the database and `users` table expected by the PHP endpoints.
+- `php.ini` – Optional development PHP configuration enabling MySQL extensions and verbose errors.
 
 ## 🛠️ Prerequisites
 
@@ -62,26 +73,26 @@ Student-Management/
 SOURCE path/to/Student-Management/database/schema.sql;
 ```
 
-3. (Optional) Insert a starter account for testing (the hashes below were generated with `password_hash`):
+3. (Optional) Insert a starter account for testing (password and security answer are stored in plain text):
 
 ```sql
 INSERT INTO users (first_name, last_name, email, password, security_question, security_answer)
 VALUES (
-  'Demo',
-  'User',
-  'demo@example.com',
-  '$2y$10$h0tyhZ4svceE1OVCzsOBsebV0PbiTOg6ZMoLPKG/mkFr/5pr1h26i',
-  'What is your first school''s name?',
-  '$2y$10$pEzOmYgJv9hvXmgwjFz8K.frM8qlZGvhfHBIrn/kK975pwt0s5yXu'
+   'Demo',
+   'User',
+   'demo@example.com',
+   'DemoPass123!',
+   'What is your first school's name?',
+   'Greenwood High'
 );
 ```
 
-> **Need a different password?** Run `php -r "echo password_hash('YourPassword123!', PASSWORD_DEFAULT);";` and paste the output into the `password` and `security_answer` fields as needed.
+> ⚠️ **Security note:** Passwords and security answers are intentionally stored exactly as submitted. Do not reuse sensitive credentials; add hashing before deploying to production.
 
 ## 🔧 Configure Database Credentials
 
 1. In MySQL Workbench, open **Database ▸ Manage Connections** and highlight your local instance (see the screenshot in this project notes). Copy the host, port, username, and password values shown there.
-2. Open `php/db-connect.php` in your editor (this file centralizes the PHP ↔️ MySQL connection used by every endpoint).
+2. Open `php/db-connect.php` in your editor (this file centralizes the PHP ↔ MySQL connection used by every endpoint).
 3. Update the values to mirror the connection you use in MySQL Workbench (`127.0.0.1`, port `3306`, username `root`, password `XXXXXXX`). The database name must remain `student_crm` unless you create a database with a different name in `schema.sql`.
 
 ```php
@@ -101,29 +112,24 @@ The repository includes a ready-to-use PHP configuration file at `php.ini` (loca
 2. Back up the existing `php.ini` if you already have one.
 3. Copy the project’s `php.ini` into that directory and overwrite (or merge the contents manually if you have other custom settings).
 4. Open the copied file and confirm the extension path matches your installation:
-  ```ini
-  extension_dir = "C:\php\ext"       ; Update this if PHP lives somewhere else
-  extension=mysqli                     ; Enables the mysqli driver
-  extension=pdo_mysql                  ; Enables PDO MySQL, used for future expansion
-  ```
-  • If PHP is installed under `C:\Program Files\php-8.4.13`, change the path to `"C:\Program Files\php-8.4.13\ext"` (remember to wrap it in quotes).  
-  • Leave the remaining directives as-is—they enable error reporting suitable for local development.
-5. Restart PowerShell/Command Prompt so environment variables reload.
+   ```ini
+   extension_dir = "C:\php\ext"       ; Update this if PHP lives somewhere else
+   extension=mysqli                     ; Enables the mysqli driver
+   extension=pdo_mysql                  ; Enables PDO MySQL, used for future expansion
+   ```
+   • If PHP is installed under `C:\Program Files\php-8.4.13`, change the path to `"C:\Program Files\php-8.4.13\ext"` (remember to wrap it in quotes).  
+   • Leave the remaining directives as-is—they enable error reporting suitable for local development.
+5. Refresh the PATH environment variable without closing PowerShell:
+   ```powershell
+   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+   ```
 6. Verify the extensions are active:
-  ```powershell
-  php -m | Select-String mysqli
-  ```
-  You should see `mysqli` in the output. If not, re-check the `extension_dir` path and ensure the `php_mysqli.dll` file exists inside that folder.
+   ```powershell
+   php -m | Select-String mysqli
+   ```
+   You should see `mysqli` in the output. If not, re-check the `extension_dir` path and ensure the `php_mysqli.dll` file exists inside that folder.
 
 ## 🚀 Run Locally
-
-1. Refresh the PATH environment variable in your current PowerShell session:
-
-```powershell
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-```
-
-2. Launch a PHP development server from the project root:
 
 ```powershell
 php -S localhost:8000
@@ -150,10 +156,10 @@ php -S localhost:8000
 ## 🧪 Testing Notes
 
 - Manual smoke testing is recommended after configuring the database:
-  - Registration with new email.
-  - Login with valid/invalid credentials.
-  - Forgot password flow with matching and mismatching answers.
-  - Logout and session expiry (refresh dashboard after logout should redirect to login).
+   - Registration with new email.
+   - Login with valid/invalid credentials.
+   - Forgot password flow with matching and mismatching answers.
+   - Logout and session expiry (refresh dashboard after logout should redirect to login).
 
 ## 📌 Troubleshooting
 
@@ -165,7 +171,7 @@ php -S localhost:8000
 ## ✅ Requirements Coverage
 
 - Landing, login, registration, dashboard, and forgot password screens implemented with the provided UI direction.
-- PHP endpoints use prepared statements, password hashing, and session management.
-- README documents structure, setup, and run instructions with clear notes on database configuration.
+- PHP endpoints now store passwords and security answers in plain text while still using prepared statements and session management.
+- README documents structure, setup, run instructions, and clarifies the intentional credential storage change.
 
 Enjoy exploring the Student CRM demo! 🎓

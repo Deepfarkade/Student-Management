@@ -38,11 +38,8 @@ if ($existingQuery->num_rows > 0) { // Checks if email already exists
 
 $existingQuery->close(); // Closes query after use
 
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hashes password securely
-$hashedSecurityAnswer = password_hash(strtolower($securityAnswer), PASSWORD_DEFAULT); // Hashes lowercased security answer for case-insensitive comparison
-
 $insertQuery = $connection->prepare('INSERT INTO users (first_name, last_name, email, password, security_question, security_answer) VALUES (?, ?, ?, ?, ?, ?)'); // Prepares insert statement
-$insertQuery->bind_param('ssssss', $firstName, $lastName, $email, $hashedPassword, $securityQuestion, $hashedSecurityAnswer); // Binds user data to statement
+$insertQuery->bind_param('ssssss', $firstName, $lastName, $email, $password, $securityQuestion, $securityAnswer); // Binds user data to statement using plain-text values
 $success = $insertQuery->execute(); // Executes insertion and captures result
 
 if (!$success) { // Checks if insertion failed
