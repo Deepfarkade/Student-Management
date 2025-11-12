@@ -4,7 +4,12 @@ require_once __DIR__ . '/db-connect.php'; // Includes database connection script
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action']) && $_GET['action'] === 'session') { // Checks if request is a session validation GET call
     if (isset($_SESSION['user_id'])) { // Determines if a user session exists
-        echo json_encode(['success' => true, 'first_name' => $_SESSION['first_name'], 'email' => $_SESSION['email']]); // Returns session information as JSON
+        echo json_encode([
+            'success' => true,
+            'user_id' => $_SESSION['user_id'],
+            'first_name' => $_SESSION['first_name'],
+            'email' => $_SESSION['email']
+        ]); // Returns session information as JSON
     } else { // Handles scenario when no session exists
         echo json_encode(['success' => false, 'message' => 'Session not found.']); // Returns failure message
     } // Ends session existence check

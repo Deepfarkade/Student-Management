@@ -9,6 +9,7 @@ A lightweight student relationship management demo showcasing landing, authentic
 - Login with PHP sessions and plain-text password comparison (hashing removed per project requirement).
 - Forgot password flow verifying security answer before password reset.
 - Authenticated dashboard with demo metrics, notifications, and logout.
+- Dynamic course catalog with 30+ curated classes, one-click enrollment, and a dedicated course preview page.
 
 ## 📁 Folder Structure
 
@@ -19,23 +20,27 @@ Student-Management/
 │   ├── style.css
 │   ├── landing.css
 │   ├── auth.css
-│   └── dashboard.css
+│   ├── dashboard.css
+│   └── course.css
 ├── js/
 │   ├── config.js
 │   ├── theme.js
 │   ├── auth.js
-│   └── dashboard.js
+│   ├── dashboard.js
+│   └── course.js
 ├── pages/
 │   ├── login.html
 │   ├── register.html
 │   ├── forgot-password.html
-│   └── dashboard.html
+│   ├── dashboard.html
+│   └── course.html
 ├── php/
 │   ├── db-connect.php
 │   ├── login.php
 │   ├── register.php
 │   ├── forgot-password.php
-│   └── logout.php
+│   ├── logout.php
+│   └── courses.php
 ├── database/
 │   └── schema.sql
 ├── php.ini
@@ -49,13 +54,16 @@ Student-Management/
 - `css/landing.css`, `css/auth.css`, `css/dashboard.css` – Page-specific styling for landing, auth flows, and the dashboard respectively.
 - `js/theme.js` – Theme toggle logic and persistence.
 - `js/auth.js` – Front-end form handling for register/login/forgot password flows.
-- `js/dashboard.js` – Dashboard interactivity plus logout wiring.
+- `js/dashboard.js` – Dashboard interactivity, session enforcement, and live course catalog management.
+- `js/course.js` – Fetches individual course information and handles enrollment from the preview page.
+- `pages/course.html` – Lightweight course spotlight page reached from the catalog.
 - `php/db-connect.php` – Central MySQL connection configuration.
 - `php/register.php` – Creates new accounts; saves passwords/security answers in plain text.
 - `php/login.php` – Authenticates users using plain-text password comparison and starts sessions.
 - `php/forgot-password.php` – Retrieves recovery questions, validates answers (case-insensitive), and updates passwords in plain text.
 - `php/logout.php` – Destroys the active session.
-- `database/schema.sql` – Defines the database and `users` table expected by the PHP endpoints.
+- `php/courses.php` – Supplies the catalog, enrolled listings, and enrollment API endpoints.
+- `database/schema.sql` – Defines the database, seeds the course catalog, and creates the `user_courses` join table with denormalized course names.
 - `php.ini` – Optional development PHP configuration enabling MySQL extensions and verbose errors.
 
 ## 🛠️ Prerequisites
@@ -67,7 +75,7 @@ Student-Management/
 ## 🗄️ Database Setup
 
 1. Open MySQL command-line or a GUI (phpMyAdmin, MySQL Workbench, etc.).
-2. Run the script located at `database/schema.sql` to create the `student_crm` database and `users` table.
+2. Run the script located at `database/schema.sql` to create the `student_crm` database, the core `users` table, and seed the `courses` / `user_courses` tables that power the dashboard catalog.
 
 ```sql
 SOURCE path/to/Student-Management/database/schema.sql;
@@ -160,6 +168,7 @@ php -S localhost:8000
    - Login with valid/invalid credentials.
    - Forgot password flow with matching and mismatching answers.
    - Logout and session expiry (refresh dashboard after logout should redirect to login).
+   - Dashboard course catalog loads at least 30 courses and allows enrolling into a new class.
 
 ## 📌 Troubleshooting
 
@@ -172,6 +181,7 @@ php -S localhost:8000
 
 - Landing, login, registration, dashboard, and forgot password screens implemented with the provided UI direction.
 - PHP endpoints now store passwords and security answers in plain text while still using prepared statements and session management.
+- Dashboard pulls personalized enrollments, syncs one-click course enrollment back to MySQL, and exposes a lightweight course preview page.
 - README documents structure, setup, run instructions, and clarifies the intentional credential storage change.
 
 Enjoy exploring the Student CRM demo! 🎓

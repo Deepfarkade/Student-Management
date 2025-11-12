@@ -1,0 +1,115 @@
+/* Course page specific styling */
+.course-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-light);
+    transition: background-color var(--transition-speed) ease;
+}
+
+body.dark-mode .course-page {
+    background-color: var(--background-dark);
+}
+
+.course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 8vw;
+}
+
+.course-header .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-weight: 700;
+}
+
+.back-link {
+    font-size: 0.95rem;
+    color: var(--primary-blue);
+}
+
+.course-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 6vw 4rem;
+}
+
+.course-detail {
+    max-width: 760px;
+    width: 100%;
+    background-color: var(--surface-light);
+    border-radius: 1.6rem;
+    box-shadow: var(--shadow-soft);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+body.dark-mode .course-detail {
+    background-color: var(--surface-dark);
+}
+
+.course-category {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background-color: rgba(37, 99, 235, 0.15);
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.85rem;
+    width: fit-content;
+}
+
+body.dark-mode .course-category {
+    background-color: rgba(59, 130, 246, 0.22);
+    color: var(--text-inverse);
+}
+
+.course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.2rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+body.dark-mode .course-meta {
+    color: rgba(203, 213, 225, 0.9);
+}
+
+.course-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.course-actions .btn-primary,
+.course-actions .btn-outline {
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+}
+
+.course-status {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+body.dark-mode .course-status {
+    color: rgba(203, 213, 225, 0.85);
+}
+
+@media (max-width: 768px) {
+    .course-header {
+        padding: 1.25rem 6vw;
+    }
+
+    .course-detail {
+        padding: 2rem;
+    }
+}

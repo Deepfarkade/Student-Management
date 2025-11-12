@@ -50,4 +50,35 @@ if (!$success) { // Checks if insertion failed
 
 $insertQuery->close(); // Closes insert statement
 
+$newUserId = $connection->insert_id; // Retrieves new user ID for default enrollments
+$defaultTitles = ['Python Fundamentals', 'Data Structures & Algorithms', 'C Programming Essentials', 'C++ Programming Fundamentals']; // Core starter courses
+$placeholders = implode(',', array_fill(0, count($defaultTitles), '?')); // Builds placeholder string
+$courseQuery = $connection->prepare("SELECT id, title FROM courses WHERE title IN ($placeholders)"); // Looks up course IDs and titles
+if ($courseQuery) { // Ensures statement prepared successfully
+    $courseQuery->bind_param(str_repeat('s', count($defaultTitles)), ...$defaultTitles); // Binds course titles
+    $courseQuery->execute(); // Executes lookup
+    $courseResult = $courseQuery->get_result(); // Fetches result set
+    $courses = []; // Initializes container for course data
+    while ($row = $courseResult->fetch_assoc()) { // Iterates over results
+        $courses[] = [
+            'id' => (int) $row['id'],
+            'title' => $row['title']
+        ]; // Stores course data
+    }
+    $courseQuery->close(); // Closes lookup statement
+
+    if (!empty($courses)) { // Ensures default courses exist
+        $enrollStmt = $connection->prepare('INSERT IGNORE INTO user_courses (user_id, course_id, course_name) VALUES (?, ?, ?)'); // Prepares enrollment insert
+        if ($enrollStmt) { // Confirms statement readiness
+            foreach ($courses as $course) { // Enrolls user into each default course
+                $courseId = $course['id'];
+                $courseTitle = $course['title'];
+                $enrollStmt->bind_param('iis', $newUserId, $courseId, $courseTitle); // Binds enrollment values
+                $enrollStmt->execute(); // Executes enrollment insert
+            }
+            $enrollStmt->close(); // Closes enrollment statement
+        }
+    }
+}
+
 echo json_encode(['success' => true, 'message' => 'Registration successful.']); // Returns success response

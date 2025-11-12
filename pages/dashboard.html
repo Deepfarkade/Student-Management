@@ -34,10 +34,10 @@
             </section> <!-- Ends heading section -->
 
             <section class="cards-grid"> <!-- Grid container for summary cards -->
-                <article class="dashboard-card"> <!-- Card for enrolled courses -->
+                <article class="dashboard-card" data-enrolled-card> <!-- Card for enrolled courses -->
                     <h3>Enrolled Courses</h3> <!-- Card title -->
-                    <span class="value">8</span> <!-- Demo value for courses -->
-                    <p>Courses you are currently tracking this semester.</p> <!-- Descriptive text -->
+                    <span class="value" data-enrolled-count>0</span> <!-- Total enrolled count -->
+                    <p>Tap to review the courses you are pursuing this semester.</p> <!-- Descriptive text -->
                 </article> <!-- Ends courses card -->
                 <article class="dashboard-card"> <!-- Card for attendance rate -->
                     <h3>Attendance Rate</h3> <!-- Card title -->
@@ -50,6 +50,31 @@
                     <p>Prepare ahead with exam reminders.</p> <!-- Descriptive text -->
                 </article> <!-- Ends exams card -->
             </section> <!-- Ends cards grid -->
+
+            <section class="enrolled-row"> <!-- Section showing current enrollments -->
+                <div class="section-header"> <!-- Header for enrolled section -->
+                    <h2>My Courses</h2> <!-- Section title -->
+                    <p>Keep tabs on what you are actively learning.</p> <!-- Section subtitle -->
+                </div> <!-- End header -->
+                <div id="enrolled-chips" class="chip-rail"> <!-- Dynamic chip list -->
+                    <!-- Populated via dashboard.js -->
+                </div> <!-- End chip rail -->
+            </section> <!-- End enrolled row -->
+
+            <section class="catalog-section"> <!-- Section listing all catalog courses -->
+                <div class="section-header catalog-header"> <!-- Header with search tools -->
+                    <div>
+                        <h2>Explore the Catalog</h2>
+                        <p>Browse additional classes and enroll instantly.</p>
+                    </div>
+                    <div class="catalog-tools">
+                        <input type="search" id="course-search" placeholder="Search courses or categories" aria-label="Search courses"> <!-- Search input -->
+                    </div>
+                </div>
+                <div id="course-grid" class="course-grid"> <!-- Dynamic catalog grid -->
+                    <!-- Filled via dashboard.js -->
+                </div>
+            </section>
 
             <section class="notifications"> <!-- Section for notifications -->
                 <h2>Recent Notifications</h2> <!-- Notifications heading -->
@@ -65,5 +90,15 @@
             <span>© 2025 Student CRM | Built for intuitive academic management.</span> <!-- Footer text -->
         </footer> <!-- Ends footer -->
     </div> <!-- Ends dashboard wrapper -->
+
+    <div id="enrolled-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="enrolled-modal-title"> <!-- Modal for enrolled courses -->
+        <div class="modal-content"> <!-- Modal body -->
+            <button type="button" id="close-enrolled" class="modal-close" aria-label="Close">×</button> <!-- Close button -->
+            <h3 id="enrolled-modal-title">Courses You Are Taking</h3> <!-- Modal title -->
+            <ul id="enrolled-modal-list" class="modal-list"> <!-- Populated via JS -->
+                <!-- List items inserted dynamically -->
+            </ul>
+        </div>
+    </div>
 </body> <!-- Ends body -->
 </html> <!-- Ends HTML document -->

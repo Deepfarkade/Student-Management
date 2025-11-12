@@ -108,6 +108,195 @@ body.dark-mode .notifications li { /* Dark mode override for notification items 
     color: var(--text-inverse); /* Sets text color to light */
 } /* Ends dark mode notification item styling */
 
+.enrolled-row, .catalog-section { /* Containers for course content */
+    background-color: var(--surface-light); /* Light surface background */
+    border-radius: 1.4rem; /* Rounded corners */
+    box-shadow: var(--shadow-soft); /* Soft shadow */
+    padding: 1.8rem; /* Internal spacing */
+    display: flex; /* Layout helper */
+    flex-direction: column; /* Stack children */
+    gap: 1.4rem; /* Space between rows */
+} /* End container styling */
+
+body.dark-mode .enrolled-row,
+body.dark-mode .catalog-section { /* Dark mode surface */
+    background-color: var(--surface-dark); /* Dark surface color */
+} /* End dark override */
+
+.section-header { /* Section titles */
+    display: flex; /* Layout titles and descriptions */
+    flex-direction: column; /* Stack text */
+    gap: 0.4rem; /* Spacing */
+} /* End section header */
+
+.catalog-header { /* Catalog header layout */
+    flex-direction: row; /* Align content horizontally */
+    justify-content: space-between; /* Space between text and controls */
+    align-items: center; /* Center vertically */
+    flex-wrap: wrap; /* Wrap on small screens */
+} /* End catalog header */
+
+.chip-rail { /* Enrolled course chips */
+    display: flex; /* Lay chips horizontally */
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 0.8rem; /* Spacing between chips */
+} /* End chip rail */
+
+.chip { /* Individual chip */
+    padding: 0.5rem 0.9rem; /* Internal spacing */
+    background-color: rgba(37, 99, 235, 0.12); /* Soft blue background */
+    border-radius: 999px; /* Pill shape */
+    font-size: 0.9rem; /* Text size */
+    color: var(--text-primary); /* Text color */
+} /* End chip styling */
+
+body.dark-mode .chip { /* Dark mode chips */
+    background-color: rgba(59, 130, 246, 0.25); /* Adjusted background */
+    color: var(--text-inverse); /* Light text */
+} /* End dark chip */
+
+.catalog-tools input { /* Search input */
+    padding: 0.65rem 0.9rem; /* Internal spacing */
+    border-radius: 0.8rem; /* Rounded corners */
+    border: 1px solid rgba(148, 163, 184, 0.45); /* Soft border */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background */
+    color: var(--text-primary); /* Text color */
+} /* End search input */
+
+body.dark-mode .catalog-tools input { /* Dark mode input */
+    background-color: rgba(15, 23, 42, 0.8); /* Dark background */
+    border-color: rgba(148, 163, 184, 0.25); /* Muted border */
+    color: var(--text-inverse); /* Light text */
+} /* End dark input */
+
+.course-grid { /* Catalog grid */
+    display: grid; /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive columns */
+    gap: 1.5rem; /* Spacing between cards */
+} /* End course grid */
+
+.course-card { /* Catalog card */
+    background-color: var(--surface-light); /* Light surface */
+    border-radius: 1rem; /* Rounded corners */
+    padding: 1.4rem; /* Internal spacing */
+    box-shadow: var(--shadow-soft); /* Shadow */
+    display: flex; /* Layout content */
+    flex-direction: column; /* Stack text */
+    gap: 0.8rem; /* Spacing */
+} /* End course card */
+
+body.dark-mode .course-card { /* Dark mode card */
+    background-color: rgba(30, 41, 59, 0.85); /* Dark surface */
+} /* End dark course card */
+
+.course-card h4 { /* Course title */
+    font-size: 1.02rem; /* Moderate size */
+    margin: 0; /* Reset margin */
+}
+
+.course-card p { /* Course summary */
+    font-size: 0.9rem; /* Body size */
+    color: var(--text-secondary); /* Muted text */
+}
+
+.course-actions { /* Action row */
+    display: flex; /* Horizontal layout */
+    gap: 0.6rem; /* Spacing */
+    margin-top: auto; /* Push to bottom */
+}
+
+.course-actions button, .course-actions a { /* Action buttons */
+    flex: 1; /* Equal width */
+    text-align: center; /* Center text */
+    padding: 0.55rem 0.6rem; /* Internal padding */
+    border-radius: 0.8rem; /* Rounded corners */
+    border: none; /* Remove border */
+    font-weight: 600; /* Emphasize */
+    cursor: pointer; /* Pointer cursor */
+    text-decoration: none; /* Remove underline */
+}
+
+.course-actions button.enrolled { /* Disabled state */
+    background-color: rgba(148, 163, 184, 0.4); /* Muted */
+    color: var(--text-secondary); /* Muted text */
+    cursor: default; /* Remove pointer */
+}
+
+.course-actions button.enroll { /* Enroll CTA */
+    background: linear-gradient(135deg, #2563eb, #1d4ed8); /* Blue gradient */
+    color: #f8fafc; /* Light text */
+}
+
+.course-actions a { /* View link styling */
+    background-color: rgba(37, 99, 235, 0.12); /* Light accent */
+    color: var(--text-primary); /* Text color */
+}
+
+body.dark-mode .course-actions a { /* Dark mode view link */
+    background-color: rgba(59, 130, 246, 0.25); /* Adjust background */
+    color: var(--text-inverse); /* Light text */
+}
+
+.modal { /* Modal overlay */
+    position: fixed; /* Fixed to viewport */
+    inset: 0; /* Full screen */
+    background-color: rgba(15, 23, 42, 0.45); /* Semi-transparent overlay */
+    display: flex; /* Center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 150; /* Above other UI */
+}
+
+.modal.hidden { /* Hidden modal */
+    display: none; /* Remove from flow */
+}
+
+.modal-content { /* Modal card */
+    background-color: var(--surface-light); /* Light surface */
+    padding: 2rem; /* Internal spacing */
+    border-radius: 1.2rem; /* Rounded corners */
+    width: min(480px, 90vw); /* Responsive width */
+    box-shadow: 0 24px 54px rgba(15, 23, 42, 0.22); /* Deep shadow */
+    position: relative; /* For close button */
+}
+
+body.dark-mode .modal-content { /* Dark mode modal */
+    background-color: rgba(30, 41, 59, 0.95); /* Dark surface */
+}
+
+.modal-close { /* Close button */
+    position: absolute; /* Place in corner */
+    top: 0.75rem; /* Offset */
+    right: 0.9rem; /* Offset */
+    background: none; /* No background */
+    border: none; /* No border */
+    font-size: 1.6rem; /* Large icon */
+    cursor: pointer; /* Clickable */
+    color: var(--text-secondary); /* Muted color */
+}
+
+.modal-list { /* Modal list */
+    list-style: none; /* Remove bullets */
+    margin-top: 1.6rem; /* Space above list */
+    display: flex; /* Layout items */
+    flex-direction: column; /* Stack items */
+    gap: 0.9rem; /* Spacing */
+}
+
+.modal-list li { /* Modal item */
+    padding: 0.85rem 1rem; /* Internal spacing */
+    border-radius: 0.9rem; /* Rounded corners */
+    background-color: rgba(37, 99, 235, 0.1); /* Accent background */
+    display: flex; /* Layout text */
+    flex-direction: column; /* Stack text */
+    gap: 0.3rem; /* Spacing */
+}
+
+body.dark-mode .modal-list li { /* Dark mode modal item */
+    background-color: rgba(59, 130, 246, 0.18); /* Adjusted background */
+    color: var(--text-inverse); /* Light text */
+}
+
 @media (max-width: 768px) { /* Responsive rules for mobile */
     .dashboard-nav { /* Targets dashboard navigation */
         padding: 1.2rem 5vw; /* Adjusts padding */
@@ -116,4 +305,10 @@ body.dark-mode .notifications li { /* Dark mode override for notification items 
     .dashboard-main { /* Targets main content */
         padding: 2rem 5vw; /* Adjusts padding */
     } /* Ends main responsive styling */
+
+    .catalog-header { /* Mobile layout fix */
+        flex-direction: column; /* Stack items */
+        align-items: flex-start; /* Align left */
+        gap: 1rem; /* Add spacing */
+    }
 } /* Ends responsive rules */
